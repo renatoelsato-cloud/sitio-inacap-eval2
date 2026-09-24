@@ -1,0 +1,20 @@
+{
+  "semestres": [
+    {
+      "numero": 1,
+      "asignaturas": ["Introduccion a Programacion Segura", "Fundamentos de Base de Datos", "Fundamentos de Hardware y Software"]
+    },
+    {
+      "numero": 2,
+      "asignaturas": ["Programacion Orientada a Objeto Seguro", "Metodologia de Desarrollo Agil", "Modelamiento de Soluciones Informaticas"]
+    },
+    {
+      "numero": 3,
+      "asignaturas": ["Programacion Front End", "Bases de Datos No Estructuradas", "Sistemas Operativos"]
+    },
+    {
+      "numero": 4,
+      "asignaturas": ["Programacion Back End", "Aplicaciones Moviles para IoT", "Proyecto Integrado"]
+    }
+  ]
+}

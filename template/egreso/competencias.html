@@ -1,0 +1,13 @@
+{% extends 'egreso/base.html' %}
+
+{% block principal %}
+<div class="container mt-4">
+    <h1>Competencias del Perfil de Egreso</h1>
+    <p>Consulta realizada: {{ hora_actual }}</p>
+    {% for competencia in competencias %}
+    <h4>{{ competencia.nombre }}</h4>
+    <p>{{ competencia.descripcion }}</p>
+    {% endfor %}
+
+</div>
+{% endblock %} 

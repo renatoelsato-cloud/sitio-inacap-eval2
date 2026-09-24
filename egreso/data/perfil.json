@@ -1,0 +1,20 @@
+{
+  "competencias": [
+    {
+      "nombre": "Desarrollo de Software Seguro",
+      "descripcion": "Disenar, programar y mantener aplicaciones informaticas aplicando buenas practicas de seguridad."
+    },
+    {
+      "nombre": "Bases de Datos",
+      "descripcion": "Modelar y administrar bases de datos relacionales y no estructuradas."
+    },
+    {
+      "nombre": "Metodologias Agiles",
+      "descripcion": "Aplicar metodologias de desarrollo agil en la gestion de proyectos de software."
+    },
+    {
+      "nombre": "Aplicaciones Moviles e IoT",
+      "descripcion": "Desarrollar aplicaciones moviles y soluciones orientadas a Internet de las Cosas."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{% extends 'egreso/base.html' %}
+{% load static %}
+
+{% block principal %}
+<div class="container mt-4">
+    <h1>Perfil de Egreso</h1>
+    <p>Analista Programador - Tecnico de Nivel Superior.</p>
+    <img src="{% static 'img/egreso.jpg' %}" alt="Graduacion" width="500">
+
+    <h3 class="mt-4">Campo Laboral</h3>
+    <ul>
+        <li>Empresas de desarrollo de software</li>
+        <li>Areas de TI de organizaciones publicas y privadas</li>
+        <li>Consultoras de tecnologia</li>
+        <li>Emprendimiento tecnologico independiente</li>
+    </ul>
+
+    <h3 class="mt-4">Egresado</h3>
+    <ul>
+        <li>Nombre: Renato Cardenas</li>
+        <li>RUT: 22.061.187-3</li>
+        <li>Fecha de nacimiento: 01-03-2006</li>
+        <li>Carrera: Analista Programador</li>
+        <li>Ciudad: La Serena, Chile</li>
+        <li>Institucion: INACAP</li>
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'malla/base.html' %}
+
+{% block principal %}
+<div class="container mt-4">
+    <h1>Malla Curricular</h1>
+        <p>Total de asignaturas: {{ total_asignaturas }}</p>
+    <p>{{ mensaje }}</p>
+
+    {% for semestre in semestres %}
+    <h3>Semestre {{ semestre.numero }}</h3>
+    <ul>
+        {% for asignatura in semestre.asignaturas %}
+        <li>{{ asignatura }}</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+
+</div>
+{% endblock %}

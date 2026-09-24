@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil de Egreso - Analista Programador</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+
+    <!-- inicio del menu -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">INACAP - Analista Programador</a>
+            <div>
+                <a class="text-white me-3" href="/malla/listado/">Malla Curricular</a>
+                <a class="text-white me-3" href="/egreso/">Perfil de Egreso</a>
+                <a class="text-white" href="/egreso/competencias/">Competencias</a>
+            </div>
+        </div>
+    </nav>
+    <!-- fin del menu -->
+
+    <!-- inicio del encabezado -->
+    <header class="bg-light py-3 border-bottom">
+        <div class="container">
+            <h2 class="mb-0">Carrera Analista Programador</h2>
+        </div>
+    </header>
+    <!-- fin del encabezado -->
+
+    <!-- inicio del principal -->
+    {% block principal %}
+    {% endblock %}
+    <!-- fin del principal -->
+
+    <!-- inicio del footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <div class="container">
+            <p class="mb-0">INACAP La Serena - Carrera Analista Programador</p>
+        </div>
+    </footer>
+    <!-- fin del footer -->
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
