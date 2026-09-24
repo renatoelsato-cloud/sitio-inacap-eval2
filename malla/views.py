@@ -1,5 +1,5 @@
-import json
-from django.shortcuts import render
+﻿from django.shortcuts import render
+from .models import Semestre
 
 
 def inicio(request):
@@ -7,14 +7,11 @@ def inicio(request):
 
 
 def listado(request):
-    with open('malla/data/malla.json', encoding='utf-8') as archivo:
-        datos = json.load(archivo)
-
-    semestres = datos['semestres']
+    semestres = Semestre.objects.prefetch_related('asignaturas').all()
 
     total_asignaturas = 0
     for semestre in semestres:
-        total_asignaturas = total_asignaturas + len(semestre['asignaturas'])
+        total_asignaturas = total_asignaturas + semestre.asignaturas.count()
 
     if total_asignaturas > 10:
         mensaje = 'Malla curricular con alta carga academica.'

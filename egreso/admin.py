@@ -1,5 +1,5 @@
 ﻿from django.contrib import admin
-from .models import Estudiante, Nota, CampoLaboral
+from .models import Estudiante, Nota, CampoLaboral, Competencia
 
 
 class NotaInline(admin.TabularInline):
@@ -29,6 +29,12 @@ class CampoLaboralAdmin(admin.ModelAdmin):
     search_fields = ("empresa", "cargo")
 
 
+class CompetenciaAdmin(admin.ModelAdmin):
+    list_display = ("nombre", "descripcion")
+    search_fields = ("nombre",)
+
+
 admin.site.register(Estudiante, EstudianteAdmin)
 admin.site.register(Nota, NotaAdmin)
 admin.site.register(CampoLaboral, CampoLaboralAdmin)
+admin.site.register(Competencia, CompetenciaAdmin)

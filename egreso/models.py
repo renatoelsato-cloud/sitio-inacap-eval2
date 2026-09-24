@@ -47,3 +47,17 @@ class CampoLaboral(models.Model):
         verbose_name = "Campo Laboral"
         verbose_name_plural = "Campos Laborales"
         ordering = ["empresa"]
+
+
+class Competencia(models.Model):
+    nombre = models.CharField(max_length=150, verbose_name="Nombre de la competencia")
+    descripcion = models.TextField(verbose_name="Descripción")
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        db_table = "competencia"
+        verbose_name = "Competencia"
+        verbose_name_plural = "Competencias"
+        ordering = ["nombre"]

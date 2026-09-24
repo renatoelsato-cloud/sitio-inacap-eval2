@@ -1,19 +1,45 @@
-{% extends 'malla/base.html' %}
+﻿{% extends 'malla/base.html' %}
 
 {% block principal %}
 <div class="container mt-4">
-    <h1>Malla Curricular</h1>
-        <p>Total de asignaturas: {{ total_asignaturas }}</p>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Malla Curricular</h1>
+        <a href="#" class="btn btn-success"><i class="bi bi-plus-lg"></i> Agregar Asignatura</a>
+    </div>
+
+    <p>Total de asignaturas: {{ total_asignaturas }}</p>
     <p>{{ mensaje }}</p>
+
+    <form class="d-flex mb-3" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar asignatura...">
+        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i> Buscar</button>
+    </form>
 
     {% for semestre in semestres %}
     <h3>Semestre {{ semestre.numero }}</h3>
-    <ul>
-        {% for asignatura in semestre.asignaturas %}
-        <li>{{ asignatura }}</li>
-        {% endfor %}
-    </ul>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Asignatura</th>
+                <th>Créditos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for asignatura in semestre.asignaturas.all %}
+            <tr>
+                <td>{{ asignatura.codigo }}</td>
+                <td>{{ asignatura.nombre }}</td>
+                <td>{{ asignatura.creditos }}</td>
+                <td>
+                    <a href="#" class="text-warning me-2"><i class="bi bi-pencil-square"></i></a>
+                    <a href="#" class="text-danger"><i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% endfor %}
-
 </div>
 {% endblock %}
