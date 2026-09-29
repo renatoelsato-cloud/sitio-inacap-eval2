@@ -9,6 +9,8 @@ class AsignaturaInline(admin.TabularInline):
 
 class SemestreAdmin(admin.ModelAdmin):
     list_display = ("numero", "horas_totales")
+    search_fields = ("numero",)
+    search_fields = ("numero",)
     inlines = [AsignaturaInline]
 
 
