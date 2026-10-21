@@ -1,9 +1,16 @@
 ﻿from django.shortcuts import render
-from .models import Competencia, Nota
+from .models import Competencia, Estudiante, CampoLaboral, Nota
 
 
 def perfil(request):
-    return render(request, 'egreso/perfil.html')
+    estudiantes = Estudiante.objects.all()
+    campos_laborales = CampoLaboral.objects.select_related('estudiante').all()
+
+    contexto = {
+        'estudiantes': estudiantes,
+        'campos_laborales': campos_laborales,
+    }
+    return render(request, 'egreso/perfil.html', contexto)
 
 
 def competencias(request):

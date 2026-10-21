@@ -1,4 +1,4 @@
-{% extends 'egreso/base.html' %}
+﻿{% extends 'egreso/base.html' %}
 {% load static %}
 
 {% block principal %}
@@ -7,22 +7,82 @@
     <p>Analista Programador - Tecnico de Nivel Superior.</p>
     <img src="{% static 'img/egreso.jpg' %}" alt="Graduacion" width="500">
 
-    <h3 class="mt-4">Campo Laboral</h3>
-    <ul>
-        <li>Empresas de desarrollo de software</li>
-        <li>Areas de TI de organizaciones publicas y privadas</li>
-        <li>Consultoras de tecnologia</li>
-        <li>Emprendimiento tecnologico independiente</li>
-    </ul>
+    <div class="d-flex justify-content-between align-items-center mt-4 mb-3">
+        <h3 class="mb-0">Egresados</h3>
+        <a href="#" class="btn btn-success"><i class="bi bi-plus-lg"></i> Agregar Egresado</a>
+    </div>
 
-    <h3 class="mt-4">Egresado</h3>
-    <ul>
-        <li>Nombre: Renato Cardenas</li>
-        <li>RUT: 22.061.187-3</li>
-        <li>Fecha de nacimiento: 01-03-2006</li>
-        <li>Carrera: Analista Programador</li>
-        <li>Ciudad: La Serena, Chile</li>
-        <li>Institucion: INACAP</li>
-    </ul>
+    <form class="d-flex mb-3" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar egresado...">
+        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i> Buscar</button>
+    </form>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>RUT</th>
+                <th>Correo</th>
+                <th>Año de egreso</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estudiante in estudiantes %}
+            <tr>
+                <td>{{ estudiante.nombre }}</td>
+                <td>{{ estudiante.rut }}</td>
+                <td>{{ estudiante.correo }}</td>
+                <td>{{ estudiante.anio_egreso }}</td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-warning me-1"><i class="bi bi-pencil-square"></i> Modificar</a>
+                    <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No hay egresados registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
+        <h3 class="mb-0">Campo Laboral</h3>
+        <a href="#" class="btn btn-success"><i class="bi bi-plus-lg"></i> Agregar Campo Laboral</a>
+    </div>
+
+    <form class="d-flex mb-3" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar campo laboral...">
+        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i> Buscar</button>
+    </form>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Empresa</th>
+                <th>Cargo</th>
+                <th>Egresado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for campo in campos_laborales %}
+            <tr>
+                <td>{{ campo.empresa }}</td>
+                <td>{{ campo.cargo }}</td>
+                <td>{{ campo.estudiante|default:"Sin asignar" }}</td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-warning me-1"><i class="bi bi-pencil-square"></i> Modificar</a>
+                    <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="text-center">No hay registros de campo laboral.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}
