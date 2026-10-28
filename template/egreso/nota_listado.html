@@ -1,0 +1,37 @@
+﻿{% extends "malla/base.html" %}
+{% block principal %}
+<div class="container my-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Registro de notas</h3>
+        {% if perms.egreso.add_nota %}
+        <a href="{% url 'nota_crear' %}" class="btn btn-success"><i class="bi bi-plus-lg"></i> Registrar nota</a>
+        {% endif %}
+    </div>
+
+    {% for m in messages %}
+    <div class="alert alert-{% if m.tags == 'error' %}danger{% else %}{{ m.tags }}{% endif %}">{{ m }}</div>
+    {% endfor %}
+
+    <form class="d-flex mb-3" role="search" method="get">
+        <input class="form-control me-2" type="search" name="q" value="{{ q }}" placeholder="Buscar por estudiante o asignatura">
+        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i> Buscar</button>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+            <tr><th>Estudiante</th><th>Asignatura</th><th>Calificación</th></tr>
+        </thead>
+        <tbody>
+            {% for n in notas %}
+            <tr>
+                <td>{{ n.estudiante.nombre }}</td>
+                <td>{{ n.asignatura }}</td>
+                <td>{{ n.calificacion }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="3" class="text-center">No hay notas registradas.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,6 +1,7 @@
 ﻿from django.urls import path
 from egreso import views as vista_egreso
 from egreso import views_estudiantes as vista_est
+from egreso import views_notas as vista_nota
 
 urlpatterns = [
     path('', vista_egreso.perfil, name='perfil'),
@@ -10,6 +11,10 @@ urlpatterns = [
     path('estudiantes/nuevo/', vista_est.estudiante_crear, name='estudiante_crear'),
     path('estudiantes/<int:pk>/editar/', vista_est.estudiante_editar, name='estudiante_editar'),
     path('estudiantes/<int:pk>/eliminar/', vista_est.estudiante_eliminar, name='estudiante_eliminar'),
+    path('registro-notas/', vista_nota.nota_listado, name='nota_listado'),
+    path('registro-notas/nueva/', vista_nota.nota_crear, name='nota_crear'),
 ]
+
+
 
 
