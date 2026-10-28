@@ -1,0 +1,16 @@
+﻿{% extends "malla/base.html" %}
+{% block principal %}
+<div class="container my-4">
+    <h3>Panel Administrativo</h3>
+    <p class="text-muted">Bienvenido, {{ user.username }}. Solo tienes acceso a las funciones asignadas a tu perfil.</p>
+
+    <div class="alert alert-secondary">Las operaciones críticas (modificar y eliminar) no están disponibles para este perfil.</div>
+
+    <div class="mb-4">
+        {% if perms.egreso.view_estudiante %}<a href="{% url 'estudiante_listado' %}" class="btn btn-danger me-2">Consultar estudiantes</a>{% endif %}
+        {% if perms.malla.view_asignatura %}<a href="{% url 'asignatura_listado' %}" class="btn btn-danger me-2">Consultar asignaturas</a>{% endif %}
+        {% if perms.egreso.add_nota %}<a href="{% url 'nota_crear' %}" class="btn btn-success me-2">Registrar nota</a>{% endif %}
+        {% if perms.egreso.view_nota %}<a href="{% url 'nota_listado' %}" class="btn btn-outline-danger">Ver notas</a>{% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,7 +1,9 @@
-﻿from django.shortcuts import render
+﻿from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 from .models import Competencia, Estudiante, CampoLaboral, Nota
 
 
+@login_required
 def perfil(request):
     estudiantes = Estudiante.objects.all()
     campos_laborales = CampoLaboral.objects.select_related('estudiante').all()
@@ -13,6 +15,7 @@ def perfil(request):
     return render(request, 'egreso/perfil.html', contexto)
 
 
+@login_required
 def competencias(request):
     lista_competencias = Competencia.objects.all()
 
@@ -22,6 +25,7 @@ def competencias(request):
     return render(request, 'egreso/competencias.html', contexto)
 
 
+@login_required
 def notas(request):
     lista_notas = Nota.objects.select_related('estudiante', 'asignatura').all()
 
@@ -29,3 +33,4 @@ def notas(request):
         'notas': lista_notas,
     }
     return render(request, 'egreso/notas.html', contexto)
+

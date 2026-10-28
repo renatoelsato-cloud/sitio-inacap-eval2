@@ -1,0 +1,33 @@
+﻿{% extends "malla/base.html" %}
+{% block principal %}
+<div class="container my-4">
+    <h3>Panel del Supervisor</h3>
+    <p class="text-muted">Bienvenido, {{ user.username }}. Puedes ver, agregar y modificar, pero no eliminar.</p>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-3"><div class="card text-center"><div class="card-body"><h2>{{ total_estudiantes }}</h2><p class="mb-0">Estudiantes</p></div></div></div>
+        <div class="col-md-3"><div class="card text-center"><div class="card-body"><h2>{{ total_asignaturas }}</h2><p class="mb-0">Asignaturas</p></div></div></div>
+        <div class="col-md-3"><div class="card text-center"><div class="card-body"><h2>{{ total_notas }}</h2><p class="mb-0">Notas</p></div></div></div>
+        <div class="col-md-3"><div class="card text-center"><div class="card-body"><h2>{% if promedio %}{{ promedio|floatformat:1 }}{% else %}-{% endif %}</h2><p class="mb-0">Promedio general</p></div></div></div>
+    </div>
+
+    <h5>Accesos autorizados</h5>
+    <div class="mb-4">
+        <a href="{% url 'estudiante_listado' %}" class="btn btn-danger me-2">Estudiantes</a>
+        <a href="{% url 'asignatura_listado' %}" class="btn btn-danger me-2">Asignaturas</a>
+        <a href="{% url 'nota_listado' %}" class="btn btn-danger me-2">Registro de notas</a>
+    </div>
+
+    <h5>Últimas notas registradas</h5>
+    <table class="table table-sm">
+        <thead><tr><th>Estudiante</th><th>Asignatura</th><th>Nota</th></tr></thead>
+        <tbody>
+            {% for n in ultimas_notas %}
+            <tr><td>{{ n.estudiante.nombre }}</td><td>{{ n.asignatura }}</td><td>{{ n.calificacion }}</td></tr>
+            {% empty %}
+            <tr><td colspan="3">Aún no hay notas.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

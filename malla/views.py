@@ -1,4 +1,5 @@
-﻿from django.shortcuts import render
+﻿from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 from .models import Semestre
 
 
@@ -6,6 +7,7 @@ def inicio(request):
     return render(request, 'malla/inicio.html')
 
 
+@login_required
 def listado(request):
     semestres = Semestre.objects.prefetch_related('asignaturas').all()
 
@@ -24,3 +26,4 @@ def listado(request):
         'mensaje': mensaje,
     }
     return render(request, 'malla/listado.html', contexto)
+
