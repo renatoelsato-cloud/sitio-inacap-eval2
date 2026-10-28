@@ -1,0 +1,25 @@
+﻿{% extends "malla/base.html" %}
+{% block principal %}
+<style>.estilo-form input{display:block;width:100%;padding:.375rem .75rem;border:1px solid #ced4da;border-radius:.375rem;}</style>
+<div class="container my-5 estilo-form" style="max-width: 420px;">
+    {% if validlink %}
+    <h3 class="mb-3">Crear nueva contraseña</h3>
+    <form method="post">
+        {% csrf_token %}
+        {% for campo in form %}
+        <div class="mb-3">
+            <label class="form-label">{{ campo.label }}</label>
+            {{ campo }}
+            <div class="small text-muted">{{ campo.help_text|safe }}</div>
+            {% for error in campo.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-danger w-100">Cambiar contraseña</button>
+    </form>
+    {% else %}
+    <h3 class="mb-3">Enlace no válido</h3>
+    <div class="alert alert-danger">El enlace ya fue usado o venció. Solicita uno nuevo.</div>
+    <a href="{% url 'password_reset' %}" class="btn btn-danger">Solicitar otro enlace</a>
+    {% endif %}
+</div>
+{% endblock %}

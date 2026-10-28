@@ -1,0 +1,8 @@
+﻿{% extends "malla/base.html" %}
+{% block principal %}
+<div class="container my-5" style="max-width: 520px;">
+    <h3 class="mb-3">Revisa tu correo</h3>
+    <div class="alert alert-success">Si el correo corresponde a una cuenta activa, te enviamos un enlace para restablecer tu contraseña.</div>
+    <a href="{% url 'login' %}" class="btn btn-danger">Volver al inicio de sesión</a>
+</div>
+{% endblock %}

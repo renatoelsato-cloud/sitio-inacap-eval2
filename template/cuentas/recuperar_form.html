@@ -1,0 +1,18 @@
+﻿{% extends "malla/base.html" %}
+{% block principal %}
+<style>.estilo-form input{display:block;width:100%;padding:.375rem .75rem;border:1px solid #ced4da;border-radius:.375rem;}</style>
+<div class="container my-5 estilo-form" style="max-width: 420px;">
+    <h3 class="mb-3">Recuperar contraseña</h3>
+    <p>Escribe el correo de tu cuenta y te enviaremos un enlace para crear una nueva contraseña.</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Correo electrónico</label>
+            {{ form.email }}
+            {% for error in form.email.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+        </div>
+        <button type="submit" class="btn btn-danger w-100">Enviar enlace</button>
+        <a href="{% url 'login' %}" class="btn btn-link w-100 mt-2">Volver al inicio de sesión</a>
+    </form>
+</div>
+{% endblock %}

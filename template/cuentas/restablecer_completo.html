@@ -1,0 +1,8 @@
+﻿{% extends "malla/base.html" %}
+{% block principal %}
+<div class="container my-5" style="max-width: 520px;">
+    <h3 class="mb-3">Contraseña actualizada</h3>
+    <div class="alert alert-success">Tu contraseña se cambió correctamente. Ya puedes iniciar sesión.</div>
+    <a href="{% url 'login' %}" class="btn btn-danger">Iniciar sesión</a>
+</div>
+{% endblock %}
