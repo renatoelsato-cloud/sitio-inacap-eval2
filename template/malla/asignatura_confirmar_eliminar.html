@@ -1,0 +1,12 @@
+﻿{% extends "malla/base.html" %}
+{% block principal %}
+<div class="container my-4" style="max-width: 600px;">
+    <h3 class="mb-3">Eliminar asignatura</h3>
+    <p>¿Seguro que quieres eliminar <strong>{{ asignatura.codigo }} - {{ asignatura.nombre }}</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'asignatura_listado' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
