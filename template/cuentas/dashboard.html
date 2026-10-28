@@ -1,0 +1,11 @@
+﻿{% extends "malla/base.html" %}
+{% block principal %}
+<div class="container my-4">
+    <h3>Bienvenido, {{ user.username }}</h3>
+    <p>Perfil: {% for g in grupos %}{{ g }}{% empty %}Superusuario{% endfor %}</p>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-danger">Cerrar sesión</button>
+    </form>
+</div>
+{% endblock %}

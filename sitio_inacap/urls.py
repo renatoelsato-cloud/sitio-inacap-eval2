@@ -1,4 +1,4 @@
-from django.contrib import admin
+﻿from django.contrib import admin
 from django.urls import path, include
 from malla.views import inicio
 
@@ -7,4 +7,5 @@ urlpatterns = [
     path('', inicio, name='home'),
     path('malla/', include('malla.urls')),
     path('egreso/', include('egreso.urls')),
+    path('cuentas/', include('cuentas.urls')),
 ]
